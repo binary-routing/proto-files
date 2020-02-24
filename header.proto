@@ -1,0 +1,55 @@
+
+syntax = "proto3";
+
+package com.xxlabaza.test.protobuf.model;
+
+option java_multiple_files = true;
+
+
+message Header {
+
+  Source source = 1;
+  Target target = 2;
+  Type type = 3;
+
+  enum Type {
+    REQUEST = 0;
+    RESPONSE = 1;
+  }
+
+  message Source {
+    oneof type {
+      MobileDevice mobileDevice = 1;
+      Service service = 2;
+    }
+  }
+
+  message Target {
+    oneof type {
+      MobileDevice mobileDevice = 1;
+      Service service = 2;
+    }
+  }
+
+  message MobileDevice {
+
+    bytes UUID = 1;
+    Application application = 2;
+    uint64 sequence = 3;
+
+    enum Application {
+      TEST_APP = 0;
+    }
+  }
+
+  message Service {
+
+    Type type = 1;
+    string host = 2;
+
+    enum Type {
+      SETTINGS = 0;
+      DASHBOARD = 1;
+    }
+  }
+}
