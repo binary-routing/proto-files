@@ -33,8 +33,8 @@ message Header {
   }
 
   message Metadata {
-    String name = 1;
-    String value = 2;
+    string name = 1;
+    string value = 2;
   }
 
   message MobileDevice {
