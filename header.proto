@@ -11,11 +11,7 @@ message Header {
   Source source = 1;
   Target target = 2;
   Type type = 3;
-
-  enum Type {
-    REQUEST = 0;
-    RESPONSE = 1;
-  }
+  repeated Metadata metadata = 4;
 
   message Source {
     oneof type {
@@ -29,6 +25,16 @@ message Header {
       MobileDevice mobileDevice = 1;
       Service service = 2;
     }
+  }
+
+  enum Type {
+    REQUEST = 0;
+    RESPONSE = 1;
+  }
+
+  message Metadata {
+    String name = 1;
+    String value = 2;
   }
 
   message MobileDevice {
